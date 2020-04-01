@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         // Global Vars
-        NAMESPACE_PREFIX="tekton-summit"
+        NAMESPACE_PREFIX="summit-tekton"
 
         PIPELINES_NAMESPACE = "tekton-summit"
         APP_NAME = "todolist"
