@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        label "master"
+        label "jenkins-slave-npm"
     }
 
     environment {
@@ -27,11 +27,6 @@ pipeline {
 
     stages {
         stage("node-build") {
-            agent {
-                node {
-                    label "jenkins-slave-npm"  
-                }
-            }
             steps {
                 sh 'printenv'
 
@@ -52,11 +47,6 @@ pipeline {
         }
 
         stage("node-bake") {
-            agent {
-                node {
-                    label "jenkins-slave-npm"  
-                }
-            }
             steps {
                 echo '### Create Linux Container Image from package ###'
                 sh  '''
@@ -68,11 +58,6 @@ pipeline {
         }
 
         stage("node-deploy") {
-            agent {
-                node {
-                    label "jenkins-slave-npm"  
-                }
-            }
             steps {
                 echo '### tag image for namespace ###'
                 sh  '''
