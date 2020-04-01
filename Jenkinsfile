@@ -8,7 +8,7 @@ pipeline {
         // Global Vars
         NAMESPACE_PREFIX="summit-tekton"
 
-        PIPELINES_NAMESPACE = "tekton-summit"
+        PIPELINES_NAMESPACE = "summit-tekton"
         APP_NAME = "todolist"
 
         JENKINS_TAG = "${JOB_NAME}.${BUILD_NUMBER}".replace("/", "-")
