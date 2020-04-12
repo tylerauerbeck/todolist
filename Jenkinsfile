@@ -1,3 +1,11 @@
+library identifier: "pipeline-library@master,
+retriever: modernSCM(
+  [
+    $class: "GitSCMSource",
+    remote: "https://github.com/redhat-cop/pipeline-library.git"
+  ]
+)
+
 pipeline {
 
     agent {
@@ -69,13 +77,14 @@ pipeline {
                     oc rollout latest dc/${APP_NAME}
                 '''
                 echo '### Verify OCP Deployment ###'
-                openshiftVerifyDeployment depCfg: env.APP_NAME, 
-                    namespace: env.PROJECT_NAMESPACE, 
-                    replicaCount: '1', 
-                    verbose: 'false', 
-                    verifyReplicaCount: 'true', 
-                    waitTime: '',
-                    waitUnit: 'sec'
+#                openshiftVerifyDeployment depCfg: env.APP_NAME, 
+#                    namespace: env.PROJECT_NAMESPACE, 
+#                    replicaCount: '1', 
+#                    verbose: 'false', 
+#                    verifyReplicaCount: 'true', 
+#                    waitTime: '',
+#                    waitUnit: 'sec'
+                 rollout deploymentConfigName: env.APP_NAME
             }
         }
     }
