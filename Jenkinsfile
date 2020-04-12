@@ -59,8 +59,8 @@ pipeline {
             steps {
                 echo '### tag image for namespace ###'
                 sh  '''
-                    oc project ${PIPELIENS_NAMESPACE}
-                    oc tag ${PIPELINES_NAMESPACE}/${APP_NAME}:${JENKINS_TAG} ${PROJECT_NAMESPACE}/${APP_NAME}:${JENKINS_TAG}
+                    oc project ${PIPELINES_NAMESPACE}
+                    oc tag ${PIPELINES_NAMESPACE}/${APP_NAME}:${JENKINS_TAG} ${PIPELINES_NAMESPACE}/${APP_NAME}:${JENKINS_TAG}
                     '''
                 echo '### set env vars and image for deployment ###'
                 sh '''
