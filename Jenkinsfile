@@ -1,4 +1,4 @@
-library identifier: "pipeline-library@master",
+library identifier: "pipeline-library@v1.5",
 retriever: modernSCM(
   [
     $class: "GitSCMSource",
@@ -77,14 +77,7 @@ pipeline {
                     oc rollout latest dc/${APP_NAME}
                 '''
                 echo '### Verify OCP Deployment ###'
-//#                openshiftVerifyDeployment depCfg: env.APP_NAME, 
-//#                    namespace: env.PROJECT_NAMESPACE, 
-//#                    replicaCount: '1', 
-//#                    verbose: 'false', 
-//#                    verifyReplicaCount: 'true', 
-//#                    waitTime: '',
-//#                    waitUnit: 'sec'
-                 rollout deploymentConfigName: env.APP_NAME
+                verifyDeployment(projectName: env.PIPELINES_NAMESPACE, targetApp: env.APP_NAME)
             }
         }
     }
